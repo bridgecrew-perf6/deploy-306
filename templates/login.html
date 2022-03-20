@@ -1,0 +1,42 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+  </head>
+  <body style="background-image: url('https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80'); background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
+    <div class="container">
+        <div style="position:relative;left:430px;top:100px;"class="left-section">
+          <div class="header">
+            <h1 class="animation a1">Welcome</h1>
+            <h4 class="animation a2">Log in for entering</h4>
+          </div>
+          <form style="height: 400px;"action="login" method="POST" class="form">
+            {%csrf_token%}
+            <input type="username" class="form-field animation a3" placeholder="Username" name="username">
+            <h6 style="position:relative;top:5px;color:red;" >{{message}}</h6>
+            <input type="password" class="form-field animation a4" placeholder="Password" name="password">
+            <button class="btn btn-primary" type="submit">SignIn</button>
+            
+            
+            <h4 class="animation a2">Dont have an account?</h4>
+            <a href="{% provider_login_url "facebook" method="js_sdk" %}">Facebook Connect</a>
+            <a  style="position:relative;bottom:40px;" href="register" class="btn btn-primary">Register</a>
+        </form>
+          </div>
+        </div>
+        
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
